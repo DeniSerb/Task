@@ -11,7 +11,7 @@ end
 Rails.application.routes.draw do
   get 'goals/new'
 
-  get 'sessions/new'
+ #get 'sessions/new' 
 
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
