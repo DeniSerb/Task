@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for @goal do |f| %>
+    
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control'%>
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control'%>
+      <%= f.label :priority %>
+      <%= f.number_field :priority, class: 'form-control', :min => '1', :max => '5'%>
+        <%= f.text_field :due_date, :required =>true, :value => Date.today, :min => Date.today, class: 'form-control'%>
+      <div class="col-md-4 col-md-offset-4">
+      <%= f.submit "save", class: "btn btn-primary",data: { disable_with: "Please wait..." } %></p>
+    </div>
+  </div>
+</div>
+<% end %>
