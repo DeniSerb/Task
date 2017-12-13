@@ -1,10 +1,11 @@
+
 Rails.application.routes.draw do
   
   get 'goals/new'
 
   get 'sessions/new'
 
-	get 'users/new'
+  get 'users/new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
@@ -28,9 +29,9 @@ Rails.application.routes.draw do
   resources :users
   resources :goals do
 
-  	member do
-    	get 'complete'
-    	get 'active_again'
-  	end
+    member do
+      get 'complete'
+      get 'active_again'
+    end
   end
 end
