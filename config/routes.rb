@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+   default_url_options :host => "localhost:3000"
   
   get 'goals/new'
 
@@ -26,7 +27,11 @@ Rails.application.routes.draw do
   get    '/goals',   to:  'goals#index'
   post   '/goals',   to:  'goals#create'
   delete '/goals',   to:  'goals#destroy'
-  resources :users
+  resources :users do
+    member do
+      get :confirm_email
+    end
+  end
   resources :goals do
 
     member do
