@@ -30,9 +30,6 @@ ActiveRecord::Schema.define(version: 20171213132443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.boolean "activated", default: false
-    t.datetime "activated_at"
-    t.string "remember_digest"
     t.boolean "email_confirmed", default: false
     t.string "confirm_token"
     t.index ["email"], name: "index_users_on_email", unique: true
