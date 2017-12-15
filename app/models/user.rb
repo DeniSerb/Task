@@ -12,6 +12,10 @@ class User < ApplicationRecord
    has_secure_password
    validates :password, presence: true, length: { minimum: 6 }
 
+   def full_name
+  "#{first_name} #{last_name}"
+  end
+
    def email_activate
     self.email_confirmed = true
     self.confirm_token = nil

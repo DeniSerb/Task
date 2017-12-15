@@ -1,20 +1,11 @@
 
 Rails.application.routes.draw do
-   default_url_options :host => "localhost:3000"
-  
   get 'goals/new'
 
   get 'sessions/new'
 
   get 'users/new'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
-Rails.application.routes.draw do
-  get 'goals/new'
-
- #get 'sessions/new' 
-
+  
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'

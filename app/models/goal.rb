@@ -5,4 +5,5 @@ class Goal < ApplicationRecord
 	validates	:priority, numericality: { only_integer: true }
 
 
+
 end
