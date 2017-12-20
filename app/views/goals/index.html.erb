@@ -1,7 +1,7 @@
-      <h2>Not completed</h2>
+       <h3>Not completed</h3>
       <ul>
          <% if @goal.empty? %>
-          <span class="text-warning">You dont have any goals, start to reach them today!</span>
+          <span>You dont have any goals, start to reach them today!</span>
          <% else @goals %>
           <%= render 'sort' %> 
           <% @goal.each do |goal| %>
@@ -11,10 +11,10 @@
 
       </ul>
       <%= link_to 'Create new goal', new_goal_path,  class: 'btn btn-primary' %>
-      <h2>Completed</h2>
+      <h3>Completed</h3>
       <ul>
         <% if @goal_completed.empty? %>
-          <span class="text-warning"> You dont have any completed goals!</span>
+          <span> You dont have any completed goals!</span>
          <% else @goal_completed %>
          <%= render 'sort' %> 
           <% @goal_completed.each do |goal| %>
