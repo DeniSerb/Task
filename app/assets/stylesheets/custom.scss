@@ -1,11 +1,26 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
+@import "bootstrap-sprockets";
 @import "users";
+@import "font-awesome";
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
 
 /* universal */
+ul li a{ 
+  text-decoration: none !important
+  
+}
+
+ul, ol{
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  list-style: none;
+}
 
 body {
   padding-top: 60px;
@@ -109,4 +124,68 @@ footer {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.btn{
+  margin-top: 15px;
+}
+
+.description-body{
+  background-color: #dedddd;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 8px;
+-webkit-box-shadow: 13px 14px 17px -13px rgba(0,0,0,0.52);
+-moz-box-shadow: 13px 14px 17px -13px rgba(0,0,0,0.52);
+box-shadow: 13px 14px 17px -13px rgba(0,0,0,0.52);
+}
+
+.goals-list{
+  background: #e4e4e4;
+  height: 80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  -webkit-box-shadow: 13px 14px 17px -13px rgba(0,0,0,0.52);
+-moz-box-shadow: 13px 14px 17px -13px rgba(0,0,0,0.52);
+box-shadow: 13px 14px 17px -13px rgba(0,0,0,0.52);
+
+  a{
+    color: #696868;
+  }
+
+  a:hover{
+    color: #337ab7 ;
+  }
+}
+
+.red{
+    a:hover{
+    color: red;
+  }
+}
+.green{
+    a:hover{
+    color: #78ed2b;
+  }
+}
+
+
+.navbar{
+  border-bottom: 3px solid #337ab7;
+
+  a{
+    color: #fff !important;
+  }
+
+  a:hover{
+    color: #337ab7 !important;
+  }
+}
+
+#logo, #logo:hover{
+  color: #fff !important;
 }

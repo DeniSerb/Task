@@ -1,4 +1,6 @@
 class GoalsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def new
   	@goal = Goal.new
   end
@@ -8,7 +10,8 @@ class GoalsController < ApplicationController
   end
 
   def index
-  	@goal = current_user.goals.all
+  	@goal = current_user.goals.order(sort_column + ' ' + sort_direction).where(complited: false) 
+    @goal_completed = current_user.goals.order(sort_column + ' ' + sort_direction).where(complited: true) 
   end
 
   def create
@@ -34,14 +37,14 @@ class GoalsController < ApplicationController
   end
 
   def edit
-    @goal = @goals = current_user.goals
+    @goal = current_user.goals.find params[:id]
   end
 
   def update
     @goal = Goal.find(params[:id])
 
     if @goal.update_attributes(goal_params)
-      redirect_to @goal
+      redirect_to goals_path
     else
       render 'edit'
     end
@@ -50,16 +53,24 @@ class GoalsController < ApplicationController
   def complete
     @goal = Goal.find(params[:id])
     @goal.update_attributes(complited: true) 
-    redirect_to goal_path
+    redirect_to goals_path
   end
 
   def active_again
     @goal = Goal.find(params[:id])
     @goal.update_attributes(complited: false) 
-    redirect_to goal_path
+    redirect_to goals_path
   end
 
   private
+
+    def sort_column
+    Goal.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
 
   def goal_params
     params.require(:goal).permit(:user_id, :title, :description, :priority, :complited, :due_date)

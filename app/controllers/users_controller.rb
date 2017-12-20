@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         flash[:success] = "Please confirm your email address to continue"
         redirect_to login_url
       else
-        flash[:error] = "Ooooppss, something went wrong!"
+        flash[:error] = "Something went wrong!"
         render 'new'
       end
   end

@@ -1,0 +1,33 @@
+<div class="goal">
+<li class="goals-list">
+    <div class="col-md-3">
+      <h4><b><%= link_to goal.title, goal_path(goal) %></b></h4>
+    </div>
+    <div class="col-md-3">
+      <p><%= goal.due_date %></p>
+    </div>
+  
+    <div class="col-md-3">
+      <%= goal.priority %>
+    </div>
+    <div class="col-md-2">
+      <b class = 'red'>
+      <%= link_to goal_path(goal), method: :delete, data: {confirm: 'Are you sure?'}, :remote => true, :class => 'delete_goal' do %>
+      <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+      <% end %>
+      </b>
+      <%= link_to "", edit_goal_path(goal), :class => 'fa fa-pencil-square-o fa-2x' %>
+      <%= link_to "", goal_path(goal), :class => 'fa fa fa-eye fa-2x' %>
+     
+      <% unless goal.complited? %>
+       <b class = "green">          
+      <%= link_to "", complete_goal_path(goal), :class => 'fa fa-check fa-2x ' %>
+    </b>
+      <% else  %> 
+      <%= link_to "", active_again_goal_path(goal), :class => 'fa fa-repeat fa-2x' %>
+      <% end %> 
+
+    </div>
+</li>
+</div>
+<div class="clearfix"></div>
