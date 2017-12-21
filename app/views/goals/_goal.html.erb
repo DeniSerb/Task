@@ -12,7 +12,7 @@
     </div>
     <div class="col-md-2">
       <b class = 'red'>
-      <%= link_to goal_path(goal), method: :delete, data: {confirm: 'Are you sure?'}, :remote => true, :class => 'delete_goal' do %>
+      <%= link_to goal_path(goal), method: :delete, data: {confirm: 'Warning! Current goal will be irretrievably removed.'}, :remote => true, :class => 'delete_goal' do %>
       <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
       <% end %>
       </b>

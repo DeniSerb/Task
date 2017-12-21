@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'spec_helper'
 
 class UserTest < ActiveSupport::TestCase
 
@@ -15,7 +15,7 @@ class UserTest < ActiveSupport::TestCase
      assert_not @user.valid?
    end
 
-   	test "last_name should be present" do
+  test "last_name should be present" do
     @user.last_name = "     "
     assert_not @user.valid?
   end

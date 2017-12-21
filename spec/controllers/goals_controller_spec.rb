@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'spec_helper'
 
 class GoalsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do

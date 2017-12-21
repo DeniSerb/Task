@@ -1,7 +1,9 @@
-       <h3>Not completed</h3>
-      <ul>
+  <h3>Not completed</h3>
+         <ul>
          <% if @goal.empty? %>
-          <span>You dont have any goals, start to reach them today!</span>
+          <b>
+            <span>You dont have any goals, start to reach them today!</span>
+          </b>
          <% else @goals %>
           <%= render 'sort' %> 
           <% @goal.each do |goal| %>
@@ -14,7 +16,9 @@
       <h3>Completed</h3>
       <ul>
         <% if @goal_completed.empty? %>
-          <span> You dont have any completed goals!</span>
+          <b>
+            <span> You dont have any completed goals!</span>
+          </b>
          <% else @goal_completed %>
          <%= render 'sort' %> 
           <% @goal_completed.each do |goal| %>
