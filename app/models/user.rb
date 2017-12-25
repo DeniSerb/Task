@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	before_create :confirmation_token
+  before_create :confirmation_token
   has_many      :goals
 
   before_save { self.email = email.downcase }
