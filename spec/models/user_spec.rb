@@ -1,51 +1,60 @@
-require 'spec_helper'
+require 'rails_helper'
 
-class UserTest < ActiveSupport::TestCase
-
-    def setup
-    @user = User.new(first_name: "Example", last_name: "Example", email: "user@example.com")
-  end
-
-  test "should be valid" do
-    assert @user.valid?
-  end
-
-  test "firs_name should be present" do
-     @user.first_name = "     "
-     assert_not @user.valid?
+describe User  do 
+  it 'show last_name' do
+    user = FactoryGirl.build(:user)  
+    expect(user.full_name).to eq("Example User")
    end
 
-  test "last_name should be present" do
-    @user.last_name = "     "
-    assert_not @user.valid?
+  it 'add new last_name' do
+    user = FactoryGirl.build(:user)
+    user = FactoryGirl.build(:user, :last_name=>"Name")  
+    expect(user.full_name).to eq("Example Name")
   end
 
-    test "email should be present" do
-    @user.email = "     "
-    assert_not @user.valid?
-  end
+ context 'valid' do
+    subject { FactoryGirl.build(:user) } 
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email) }
+    it { should validate_length_of(:password).is_at_least(6) }
+  end 
+ 
+  context "password" do
+   let(:user) { FactoryGirl.build(:user) }
 
-    test "first_name should not be too long" do
-    @user.first_name = "a" * 51
-    assert_not @user.valid?
-  end
-
-    test "last_name should not be too long" do
-    @user.last_name = "a" * 51
-    assert_not @user.valid?
-  end
-
-  test "email should not be too long" do
-    @user.email = "a" * 244 + "@example.com"
-    assert_not @user.valid?
-  end
-
-  test "email validation should reject invalid addresses" do
-    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
-                           foo@bar_baz.com foo@bar+baz.com]
-    invalid_addresses.each do |invalid_address|
-      @user.email = invalid_address
-      assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
+    it "not valid password" do
+      user.password = "Password1"
+      user.password_confirmation = "password2"
+      user.should_not be_valid
     end
+
+    it "valid password" do
+    user.password = "Password1"
+    user.password_confirmation = "Password1"
+    expect(user).to be_valid  
+   end 
+  end 
+
+  context "email" do
+   let(:user) { FactoryGirl.build(:user) }
+
+    it "should be invalid" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                      foo@bar_baz.ru foo@bar+baz.ua]
+      addresses.each do |invalid_address|
+        user.email = invalid_address
+        expect(user).not_to be_valid
+      end
+    end
+
+    it "should be valid" do
+      addresses = %w[user@foo.COM A_b-C@b.ua frst.lst@foo.jp a+b@baz.cn]
+      addresses.each do |valid_address|
+        user.email = valid_address
+        expect(user).to be_valid
+        end
+    end  
   end
 end

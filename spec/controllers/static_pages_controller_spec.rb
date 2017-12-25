@@ -1,28 +1,34 @@
 require 'spec_helper'
 
-class StaticPagesControllerTest < ActionDispatch::IntegrationTest
+  describe StaticPagesController do
 
-  test "should get home" do
-    get root_path
-    assert_response :success
-    assert_select "title", "Task Manager"
+ 
+   describe "GET 'home'" do
+    it "returns http success" do
+      get 'home'
+      response.should be_success
+    end
   end
 
-  test "should get help" do
-    get help_path
-    assert_response :success
-    assert_select "title", "Help | Task Manager"
+   describe "GET 'help'" do
+    it "returns http success" do
+      get 'help'
+      response.should be_success
+    end
   end
 
-  test "should get about" do
-    get about_path
-    assert_response :success
-    assert_select "title", "About | Task Manager"
+  describe "GET 'about'" do
+    it "returns http success" do
+      get 'about'
+      response.should be_success
+    end
   end
 
-  test "should get contact" do
-    get contact_path
-    assert_response :success
-    assert_select "title", "Contact | Task Manager"
+  describe "GET 'contact'" do
+    it "returns http success" do
+      get 'contact'
+      response.should be_success
+    end
   end
+
 end

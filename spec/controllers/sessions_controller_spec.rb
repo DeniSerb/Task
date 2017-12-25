@@ -1,9 +1,12 @@
 require 'spec_helper'
 
-class SessionsControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get sessions_new_url
-    assert_response :success
-  end
+describe SessionsController do
+
+  describe "GET new" do
+    it "returns http success" do
+    	get 'new'
+    	response.should be_success
+  	end
+	end
 
 end
