@@ -2,6 +2,6 @@
 
 <p>
 	Thanks for registering! To confirm your registration click the URL below.
-
-	<a href=<%= confirm_email_user_url(@user.confirm_token) %>> </a>
 </p>
+
+	<%= confirm_email_user_url(@user.confirm_token) %>
